@@ -1,0 +1,19 @@
+<h1>{{blogpost.post_head}}</h1>
+<ul>
+{{this_post.post_head}}
+</ul>
+<ul>
+{{this_post.post_text}}
+</ul>
+<ul>
+
+{% if this_comments %}
+    <ul>
+    {% for comment in this_comments %}
+        <li>{{ comment.comment_text }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No comments are available.</p>
+{% endif %}
+</ul>

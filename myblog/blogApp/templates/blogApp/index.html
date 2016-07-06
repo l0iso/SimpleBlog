@@ -1,0 +1,26 @@
+
+{% block title %}myblog{% endblock %}
+{% block content %}
+    <div id="post">
+        {% for post in posts %}
+        <ul>
+        <li><a href="{% url 'detail' post.id %}">{{ post.post_head}}</a></li>
+        </ul>
+        {{ post.post_date }}
+        {{ post.post_author }}<br />
+        {{ post.post_text|truncatewords:80|safe }}<br />
+         <a href="{% url 'detail' post.id %}">view post</a>
+        {% endfor %}
+    <div id="pages" align="center">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Previous</a>
+        {% endif %}
+    <span class="current">
+        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+    </span>
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}
