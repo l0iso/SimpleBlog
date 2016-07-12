@@ -6,15 +6,11 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/admin.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/apps.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/migrations/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/migrations/serializers.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/models.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/serializers.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/tests.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/myblog/projectApi/views.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myblog/blogApp/urls.py" afterPath="$PROJECT_DIR$/myblog/blogApp/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myblog/blogApp/views.py" afterPath="$PROJECT_DIR$/myblog/blogApp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myblog/myblog/settings.py" afterPath="$PROJECT_DIR$/myblog/myblog/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myblog/myblog/urls.py" afterPath="$PROJECT_DIR$/myblog/myblog/urls.py" />
     </list>
     <ignored path="SimpleBlog.iws" />
     <ignored path=".idea/workspace.xml" />
