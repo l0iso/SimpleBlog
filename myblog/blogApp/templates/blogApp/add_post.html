@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/jquery-3.0.0.min.js' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap-theme.min.css' %}" />
+<html>
+
+<nav class="navbar navbar-inverse">
+<ul class="nav navbar-nav">
+  <li role="presentation"><a href="{% url 'blog:index' %}">Home</a></li>
+  <li role="presentation" class="active"><a href="{%url 'blog:add_post' %}">Add Post</a></li>
+</ul>
+</nav>
+
+{% block content %}
+<form method="post" class="post-form">{% csrf_token %}
+
+    <!--{{form.as_p}}-->
+   <div class="form-group col-md-10">
+    <label for="id_post_head">{{form.post_head.label}}</label>
+    <input type="text" id='id_post_head' name="post_head" class="form-control"  placeholder="{{form.post_head.label}}" >
+  </div>
+
+
+    <div class="form-group col-md-10">
+    <label for="id_post_author">{{form.post_author.label}}</label>
+    <input type="text" id='id_post_author' name="post_author" class="form-control"  placeholder="{{form.post_author.label}}" >
+  </div>
+
+    <div class="form-group col-md-10">
+    <label>{{form.post_text.label}}</label>
+        <!--<input type="text" id='{{form.post_text.label}}' name="{{form.post_text.label}}"class="form-control"  placeholder="{{form.post_text.label}}" >-->
+    <textarea type="text" id='id_post_text' name="post_text"class="form-control"  placeholder="{{form.post_text.label}}"></textarea>
+  </div>
+
+   <div class="form-group col-md-10">
+    <button type="submit" class="save btn btn-default">add post</button>
+  </div>
+{{form.errors}}
+    </form>
+ {% endblock %}
+</html>

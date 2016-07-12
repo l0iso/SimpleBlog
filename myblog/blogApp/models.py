@@ -5,10 +5,11 @@ from django.db import models
 # Create your models here.
 
 class BlogPost(models.Model):
-    post_head = models.CharField(max_length=150)
+    post_head = models.CharField("Head",max_length=150)
     post_text = models.CharField(max_length=10000)
     post_date = models.DateTimeField('date published')
     post_author = models.CharField(max_length=20)
+    post_condition = models.BooleanField(default= False)
 
     def __str__(self):
         return self.post_head

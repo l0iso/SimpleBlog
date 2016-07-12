@@ -1,19 +1,42 @@
-<h1>{{blogpost.post_head}}</h1>
-<ul>
-{{this_post.post_head}}
-</ul>
-<ul>
-{{this_post.post_text}}
-</ul>
-<ul>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/jquery-3.0.0.min.js' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap-theme.min.css' %}" />
 
+{%include "blogApp/top4ik.html"%}
+
+<div class="container">
+<h1>
+{{this_post.post_head}}
+</h1>
+<dl class="dl-horizontal">
+  <dt>Author</dt>
+  <dd>{{this_post.post_author}} </dd>
+        <dt>Post Date</dt>
+  <dd>{{this_post.post_date}}</dd>
+    <dt>Post</dt>
+  <dd> <div class="panel panel-default">
+  <div class="panel-body">
+    {{this_post.post_text}}
+  </div>
+</div>
+      </dd>
+</dl>
+<ul>
 {% if this_comments %}
-    <ul>
     {% for comment in this_comments %}
-        <li>{{ comment.comment_text }}</li>
+          <li> {{ comment.comment_author }}</li>
+          <li>{{ comment.comment_text }}</li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No comments are available.</p>
 {% endif %}
 </ul>
+{% block content %}
+<form method="post" class="comment-form">{% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="save btn btn-default">add comment</button>
+</form>
+{% endblock %}
+</div>

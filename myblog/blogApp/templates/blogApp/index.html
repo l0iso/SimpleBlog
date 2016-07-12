@@ -1,16 +1,63 @@
+{% load staticfiles %}
 
-{% block title %}myblog{% endblock %}
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/jquery-3.0.0.min.js' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap-theme.min.css' %}" />
+<style>
+   hr {
+       width: 130px;
+    border: none; /* Убираем границу */
+    background-color: #6b6868; /* Цвет линии */
+    color: rgba(63, 66, 61, 0.97); /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+   }
+  </style>
+
 {% block content %}
-    <div id="post">
-        {% for post in posts %}
-        <ul>
-        <li><a href="{% url 'detail' post.id %}">{{ post.post_head}}</a></li>
-        </ul>
-        {{ post.post_date }}
-        {{ post.post_author }}<br />
-        {{ post.post_text|truncatewords:80|safe }}<br />
-         <a href="{% url 'detail' post.id %}">view post</a>
-        {% endfor %}
+<nav class="navbar navbar-inverse">
+<ul class="nav navbar-nav">
+  <li role="presentation" class="active"><a href="{% url 'blog:index' %}">Home</a></li>
+  <li role="presentation"><a href="{%url 'blog:add_post' %}">Add Post</a></li>
+</ul>
+</nav>
+
+    <div id="post" class="container" align="center">
+        {%for post in posts%}
+        <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><a href="{% url 'blog:detail' post.id %}">{{ post.post_head }}</a></div>
+  <div class="panel-body">
+    <p>{{ post.post_text|truncatewords:3|safe  }}</p>
+  </div>
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">Author: {{post.post_author}},date: {{ post.post_date }}</li>
+    <li class="list-group-item">comments : {{ post.comments_set.count }}</li>
+      <hr>
+  </ul>
+            {%endfor%}
+</div>
+         <!--<table class="table">-->
+    <!--<thead>-->
+      <!--<tr>-->
+        <!--<th>Post head</th>-->
+        <!--<th>text post</th>-->
+        <!--<th>count comments</th>-->
+      <!--</tr>-->
+    <!--</thead>-->
+
+    <!--<tbody>-->
+    <!--{%for post in posts%}-->
+      <!--<tr>-->
+        <!--<td><a href="{% url 'blog:detail' post.id %}">{{ post.post_head }}</a></td>-->
+        <!--<td>{{ post.post_text|truncatewords:3|safe  }}</td>-->
+        <!--<td>{{ post.comments_set.count }}</td>-->
+      <!--</tr>-->
+    <!--{%endfor%}-->
+    <!--</tbody>-->
+  <!--</table>-->
+
+
     <div id="pages" align="center">
         {% if posts.has_previous %}
             <a href="?page={{ posts.previous_page_number }}">Previous</a>
