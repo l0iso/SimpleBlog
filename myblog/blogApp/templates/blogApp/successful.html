@@ -1,0 +1,10 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/jquery-3.0.0.min.js' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogApp/bootstrap-theme.min.css' %}" />
+
+<div class="alert alert-success" role="alert">You'r post is sended to admin</div>
+
+<div class="jumbotron">
+  <p><a class="btn btn-primary btn-lg"  href="{% url 'blog:index' %}" role="button">Back</a></p>
+</div>
