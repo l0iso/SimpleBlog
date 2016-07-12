@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.template import RequestContext, loader
+from django.template import RequestContext
 from django.shortcuts import render, render_to_response
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .forms import  CommentsForm,PostForm
@@ -8,6 +8,19 @@ from django.shortcuts import redirect
 # Create your views here.
 
 from .models import BlogPost, Comments
+from serializers import PostSerializer,CommentsSerializer
+from rest_framework import viewsets
+
+
+class PostViewSet (viewsets.ModelViewSet):
+    queryset = BlogPost.objects.all().order_by('-post_date')
+    serializer_class = PostSerializer
+
+
+class CommentsViewSet (viewsets.ModelViewSet):
+    queryset = Comments.objects.all()
+    serializer_class = CommentsSerializer
+
 
 
 def index(request):
@@ -58,3 +71,4 @@ def add_post(request):
 
 def success(request):
     return render(request,'blogApp/successful.html')
+

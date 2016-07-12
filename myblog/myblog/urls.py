@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from rest_framework import routers
+from blogApp.views import PostViewSet, CommentsViewSet
+
+router = routers.DefaultRouter()
+router.register(r'post', PostViewSet)
+router.register(r'comments',CommentsViewSet)
 
 urlpatterns = [
+    url(r'^v1.0/', include(router.urls)),
     url(r'^blogApp/', include('blogApp.urls')),
     url(r'^admin/', admin.site.urls),
 
 ]
+
+
