@@ -1,8 +1,7 @@
-from __future__ import unicode_literals
 
+from __future__ import unicode_literals
 from django.db import models
 
-# Create your models here.
 
 class BlogPost(models.Model):
     post_head = models.CharField("Head",max_length=150)
@@ -11,7 +10,7 @@ class BlogPost(models.Model):
     post_author = models.CharField(max_length=20)
     post_condition = models.BooleanField(default= False)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.post_head
 
 
@@ -21,5 +20,5 @@ class Comments(models.Model):
     comment_date = models.DateTimeField('comment date')
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.comment_text

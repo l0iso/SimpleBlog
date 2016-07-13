@@ -1,3 +1,4 @@
+
 from django.http import Http404
 from django.template import RequestContext
 from django.shortcuts import render, render_to_response
@@ -26,7 +27,7 @@ class CommentsViewSet (viewsets.ModelViewSet):
 def index(request):
     '''Show posts'''
     posts_list = BlogPost.objects.filter(post_condition = True).order_by('-post_date')
-    paginator = Paginator(posts_list, 4)
+    paginator = Paginator(posts_list, 10)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -49,6 +50,7 @@ def detail (request, post_id):
         if form.is_valid():
             new_commint = form.save(commit= False)
             new_commint.comment_date = datetime.datetime.now()
+            new_commint.post_id = post_id
             new_commint.save()
             return redirect("blog:detail", post_id)
     else:

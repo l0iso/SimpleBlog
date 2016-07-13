@@ -1,3 +1,4 @@
+# coding: utf-8
 """
 Django settings for myblog project.
 
@@ -107,6 +108,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ('RU', 'Russian'),
+    ('ENG', 'English')
+
+)
 
 TIME_ZONE = 'UTC'
 

@@ -1,3 +1,4 @@
+
 from django.conf.urls import patterns, url
 from . import  views
 app_name = 'blog'

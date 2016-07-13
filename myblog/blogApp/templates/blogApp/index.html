@@ -27,13 +27,14 @@
   <!-- Default panel contents -->
   <div class="panel-heading"><a href="{% url 'blog:detail' post.id %}">{{ post.post_head }}</a></div>
   <div class="panel-body">
-    <p>{{ post.post_text|truncatewords:3|safe  }}</p>
+    <p>{{ post.post_text|truncatewords:30|safe  }}</p>
   </div>
   <!-- List group -->
   <ul class="list-group">
-    <li class="list-group-item">Author: {{post.post_author}},date: {{ post.post_date }}</li>
+    <li class="list-group-item">Author: {{post.post_author}},  &nbsp;date: {{ post.post_date }}</li>
     <li class="list-group-item">comments : {{ post.comments_set.count }}</li>
       <hr>
+
   </ul>
             {%endfor%}
 </div>
